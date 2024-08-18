@@ -14,27 +14,32 @@ import {
   TableContainer,
 } from '@chakra-ui/react';
 
-function AccordionTable() {
-  return (
+import { food } from '../utils/typeDeclarations';
+
+function AccordionTable({ data }: { data: Array<food> }) {
+  return data.map((item: food, index: number) => (
     <Accordion
-      allowToggle
+      allowMultiple
       display="flex"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       minWidth="70vw"
       textAlign="left"
+      key={index}
     >
       <AccordionItem>
         <h2>
           <AccordionButton
-          minWidth='70vw'
+            minWidth="70vw"
+            justifyContent="space-between"
+            _expanded={{ bg: '#6c63ff', color: 'white' }}
           >
-            <Box>Milk, NFS</Box>
+            <Box>{item['Food description']}</Box>
             <AccordionIcon />
           </AccordionButton>
         </h2>
-        <AccordionPanel pb={4} maxWidth='70vw'>
+        <AccordionPanel pb={4} maxWidth="70vw">
           <TableContainer>
             <Table variant="simple">
               <Thead>
@@ -49,12 +54,12 @@ function AccordionTable() {
               </Thead>
               <Tbody>
                 <Tr>
-                  <Td>Milk, reduced fat</Td>
-                  <Td>4.83</Td>
-                  <Td>52</Td>
-                  <Td>0</Td>
-                  <Td>3.33</Td>
-                  <Td>2.14</Td>
+                  <Td>{item['Category description']}</Td>
+                  <Td>{item['Carbohydrate (g)']}</Td>
+                  <Td>{item['Energy (kcal)']}</Td>
+                  <Td>{item['Fiber, total dietary (g)']}</Td>
+                  <Td>{item['Protein (g)']}</Td>
+                  <Td>{item['Total Fat (g)']}</Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -62,7 +67,7 @@ function AccordionTable() {
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
-  );
+  ));
 }
 
 export default AccordionTable;

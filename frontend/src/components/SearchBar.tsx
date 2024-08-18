@@ -1,25 +1,24 @@
 import { Input } from '@chakra-ui/react';
-import { useState } from 'react';
 
 function SearchBar() {
-  const [searchItem, setSearchItem] = useState('');
 
-  const userInput = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setSearchItem(e.target.value)
-    console.log(searchItem)
-  }
+  // const userInput = (e:React.ChangeEvent<HTMLInputElement>) => {
+  //   setUserSearch(e.target.value)
+  // }
 
   return (
     <Input
       placeholder="Search for an aliment"
-      size="md"
+      size="lg"
       w="70vw"
-      marginBottom='5vh'
+      marginBottom='10vh'
       autoFocus
       focusBorderColor="#6c63ff"
-      onChange={userInput}
+      type='search'
+      // onChange={userInput}
     />
   );
 }
 
 export default SearchBar;
+// {setUserSearch}:{setUserSearch:React.Dispatch<React.SetStateAction<string>>}

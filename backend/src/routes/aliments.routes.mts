@@ -4,10 +4,13 @@ import { aliment, fieldsToInclude } from '../models/aliments.model.mjs';
 const alimentsRoutes = new Hono()
   .get('/', async (c) => {
     try {
-      const alimentsData = await aliment.find({}, fieldsToInclude);
+      const alimentsData = await aliment.find({}, fieldsToInclude).limit(10);
       return c.json(alimentsData);
     } catch (error) {
-      return c.json({ error: 'Unable to retrieve aliments from the database' }, 500);
+      return c.json(
+        { error: 'Unable to retrieve aliments from the database' },
+        500
+      );
     }
   })
   .get('/:aliment', async (c) => {

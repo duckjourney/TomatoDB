@@ -1,13 +1,13 @@
 import { Hono } from 'hono';
 import { aliment, fieldsToInclude } from '../models/aliments.model.mjs';
 
-const getAliments = new Hono()
+const alimentsRoutes = new Hono()
   .get('/', async (c) => {
     try {
       const alimentsData = await aliment.find({}, fieldsToInclude);
       return c.json(alimentsData);
     } catch (error) {
-      return c.json({ error: 'Unable to aliments database' }, 500);
+      return c.json({ error: 'Unable to retrieve aliments from the database' }, 500);
     }
   })
   .get('/:aliment', async (c) => {
@@ -19,7 +19,10 @@ const getAliments = new Hono()
       );
       if (alimentData.length === 0) {
         return c.json(
-          { error: 'Failed to find the aliment in the database.' },
+          {
+            error:
+              'This aliment does not exist in the database, please check spelling.',
+          },
           500
         );
       }
@@ -32,4 +35,4 @@ const getAliments = new Hono()
     }
   });
 
-export default getAliments;
+export default alimentsRoutes;

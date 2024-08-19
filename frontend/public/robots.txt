@@ -1,0 +1,11 @@
+# Allow all crawlers access to everything
+User-agent: *
+Disallow:
+
+# Disallow access to specific directories or files if needed
+# Disallow: /private/
+# Disallow: /api/
+# Disallow: /admin/
+
+# Allow access to specific directories if they were disallowed above
+# Allow: /public/

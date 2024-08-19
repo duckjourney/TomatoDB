@@ -27,7 +27,7 @@ function AccordionTable({ data }: { data: Array<food> }) {
         </div>
         <Image
           src={notFoundImage}
-          boxSize="40vw"
+          boxSize="37vw"
           objectFit="contain"
           alt="Not found"
         />
@@ -48,6 +48,7 @@ function AccordionTable({ data }: { data: Array<food> }) {
       <AccordionItem>
         <h2>
           <AccordionButton
+            textAlign="left"
             minWidth="70vw"
             justifyContent="space-between"
             _expanded={{ bg: '#6c63ff', color: 'white' }}

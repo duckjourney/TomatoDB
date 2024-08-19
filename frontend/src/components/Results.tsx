@@ -1,13 +1,24 @@
 import { Image } from '@chakra-ui/react';
 import searchImage from '../assets/search.svg';
 import AccordionTable from './AccordionTable.tsx';
-import { food } from '../utils/typeDeclarations.ts'
+import { food } from '../utils/typeDeclarations.ts';
 
-function Results({ data, userInput }:{data : Array<food>, userInput:string}) {
+function Results({
+  data,
+  userInput,
+}: {
+  data: Array<food>;
+  userInput: string;
+}) {
   return (
     <>
-      {userInput === "" ? (
-        <Image src={searchImage} boxSize="40vw" objectFit="contain" alt='Search'/>
+      {userInput === '' ? (
+        <Image
+          src={searchImage}
+          boxSize="40vw"
+          objectFit="contain"
+          alt="Search"
+        />
       ) : (
         <AccordionTable data={data} />
       )}

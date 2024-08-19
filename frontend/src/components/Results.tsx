@@ -3,11 +3,11 @@ import searchImage from '../assets/search.svg';
 import AccordionTable from './AccordionTable.tsx';
 import { food } from '../utils/typeDeclarations.ts'
 
-function Results({ data }:{data : Array<food>}) {
+function Results({ data, userInput }:{data : Array<food>, userInput:string}) {
   return (
     <>
-      {data.length === 0 ? (
-        <Image src={searchImage} boxSize="40vw" objectFit="contain" />
+      {userInput === "" ? (
+        <Image src={searchImage} boxSize="40vw" objectFit="contain" alt='Search'/>
       ) : (
         <AccordionTable data={data} />
       )}

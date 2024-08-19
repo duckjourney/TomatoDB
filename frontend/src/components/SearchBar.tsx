@@ -1,10 +1,6 @@
 import { Input } from '@chakra-ui/react';
 
-function SearchBar() {
-
-  // const userInput = (e:React.ChangeEvent<HTMLInputElement>) => {
-  //   setUserSearch(e.target.value)
-  // }
+function SearchBar({query}: { query: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
 
   return (
     <Input
@@ -15,10 +11,9 @@ function SearchBar() {
       autoFocus
       focusBorderColor="#6c63ff"
       type='search'
-      // onChange={userInput}
+      onInput={query}
     />
   );
 }
 
 export default SearchBar;
-// {setUserSearch}:{setUserSearch:React.Dispatch<React.SetStateAction<string>>}

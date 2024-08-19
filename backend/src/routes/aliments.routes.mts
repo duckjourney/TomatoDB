@@ -16,18 +16,12 @@ const alimentsRoutes = new Hono()
   .get('/:aliment', async (c) => {
     try {
       const alimentURL = c.req.param('aliment');
-      const alimentData = await aliment.find(
-        { 'Food description': { $regex: alimentURL, $options: 'i' } },
-        fieldsToInclude
-      );
+      const regex = new RegExp(`^${alimentURL.replace(/[\W_]+/g, '.*')}`, 'i');
+      const alimentData = await aliment
+        .find({ 'Food description': { $regex: regex } }, fieldsToInclude)
+        .limit(30);
       if (alimentData.length === 0) {
-        return c.json(
-          {
-            error:
-              'This aliment does not exist in the database, please check spelling.',
-          },
-          500
-        );
+        return c.json([]);
       }
       return c.json(alimentData);
     } catch (error) {

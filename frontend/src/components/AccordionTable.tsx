@@ -12,11 +12,21 @@ import {
   Th,
   Td,
   TableContainer,
+  Image
 } from '@chakra-ui/react';
 
 import { food } from '../utils/typeDeclarations';
+import notFoundImage from '../assets/not_found.svg'
 
 function AccordionTable({ data }: { data: Array<food> }) {
+  if (data.length===0) {
+    return (
+      <>
+    <div>The aliment does not exist in the database. Please check spelling.</div>
+      <Image src={notFoundImage} boxSize="40vw" objectFit="contain" alt='Not found' />
+    </>
+    )
+  }
   return data.map((item: food, index: number) => (
     <Accordion
       allowMultiple

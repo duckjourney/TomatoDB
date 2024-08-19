@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import Results from './components/Results.tsx';
 import SearchBar from './components/SearchBar.tsx';
@@ -6,6 +7,8 @@ import { Box, ChakraProvider } from '@chakra-ui/react';
 function App() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState('');
+
+  const host = import.meta.env.VITE_HOST
 
   const query = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
@@ -16,7 +19,7 @@ function App() {
       try {
         if (userInput !== '') {
           const response = await fetch(
-            `http://localhost:3000/api/aliments/${userInput}`
+            host+userInput
           );
           const result = await response.json();
           setData(result);

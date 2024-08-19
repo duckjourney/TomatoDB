@@ -4,7 +4,7 @@ import { aliment, fieldsToInclude } from '../models/aliments.model.mjs';
 const alimentsRoutes = new Hono()
   .get('/', async (c) => {
     try {
-      const alimentsData = await aliment.find({}, fieldsToInclude).limit(10);
+      const alimentsData = await aliment.find({}, fieldsToInclude).limit(30);
       return c.json(alimentsData);
     } catch (error) {
       return c.json(

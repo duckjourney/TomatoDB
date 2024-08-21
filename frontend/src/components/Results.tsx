@@ -1,7 +1,7 @@
 import { Image } from '@chakra-ui/react';
 import searchImage from '../assets/search.svg';
 import AccordionTable from './AccordionTable.tsx';
-import { food } from '../utils/typeDeclarations.ts';
+import type { food } from '../declarations.d.ts';
 
 function Results({
   data,

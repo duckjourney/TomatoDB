@@ -15,7 +15,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 
-import { food } from '../utils/typeDeclarations';
+import type {food} from '../declarations';
 import notFoundImage from '../assets/not_found.svg';
 
 function AccordionTable({ data }: { data: Array<food> }) {
